@@ -37,7 +37,7 @@ const FavButtonInitiator = {
   _renderRemoveFav() {
     this._favButtonContainer.innerHTML = createRemoveFavButtonTemplate();
 
-    const favButton = document.querySelector('#favButton');
+    const favButton = document.querySelector('#removeFavButton');
     favButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
       this._renderButton();

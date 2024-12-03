@@ -96,11 +96,16 @@ const createRestaurantItemTemplate = (restaurant) => `
 `;
 
 const createAddToFavButtonTemplate = () => `
-  <button type="button" class="size-44 fav-btn" id="favButton" aria-label="Like this movie">Tambahkan ke Favorit</button>
+  <button type="button" class="size-44 fav-btn" id="favButton" aria-label="Add this movie to fav">Tambahkan ke Favorit</button>
 `;
 
 const createRemoveFavButtonTemplate = () => `
-  <button type="button" class="size-44 fav-btn" id="favButton" aria-label="Like this movie">Hapus dari Favorit</button>
+  <button type="button" class="size-44 fav-btn" id="removeFavButton" aria-label="Remove this movie from fav">Hapus dari Favorit</button>
 `;
 
-export { createRestaurantItemTemplate, createRestaurantDetailTemplate, createAddToFavButtonTemplate, createRemoveFavButtonTemplate };
+export {
+  createRestaurantItemTemplate,
+  createRestaurantDetailTemplate,
+  createAddToFavButtonTemplate,
+  createRemoveFavButtonTemplate,
+};
