@@ -20,6 +20,8 @@
     "linebreak-style": 0,
     "quotes": "off",
     "eol-last": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "indent": "off",
+    "comma-dangle": "off"
   }
 }
