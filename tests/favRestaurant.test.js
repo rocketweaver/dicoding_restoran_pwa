@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import FavButtonInitiator from "../src/scripts/utils/fav-initiator-btn";
 import FavoriteRestaurantIdb from "../src/scripts/data/restaurant-fav-idb";
+import * as TestFactories from "./helpers/testFactories";
 
 describe("Add Restaurant to Favorite", () => {
   const addFavBtnContainer = () => {
@@ -13,11 +11,8 @@ describe("Add Restaurant to Favorite", () => {
   });
 
   it("Tambahkan ke Favorit should be shown before it is added to fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     expect(
@@ -26,11 +21,8 @@ describe("Add Restaurant to Favorite", () => {
   });
 
   it("Hapus dari Favorit should not be shown before it is added to fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     expect(
@@ -39,11 +31,8 @@ describe("Add Restaurant to Favorite", () => {
   });
 
   it("It should be able to be added to fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     document.querySelector("#favButton").dispatchEvent(new Event("click"));
@@ -57,9 +46,8 @@ describe("Add Restaurant to Favorite", () => {
   });
 
   it("It shouldn't be able to be added to fav when it is already added", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: { id: "rqdv5juczeskfw1e867" },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     await FavoriteRestaurantIdb.putRestaurant({ id: "rqdv5juczeskfw1e867" });
@@ -74,10 +62,7 @@ describe("Add Restaurant to Favorite", () => {
   });
 
   it("It shouldn't be able to be added to fav when it has no id", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {},
-    });
+    await TestFactories.createFavButtonPresenterWithRestaurant({});
 
     document.querySelector("#favButton").dispatchEvent(new Event("click"));
 

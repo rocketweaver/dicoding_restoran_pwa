@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import FavButtonInitiator from "../src/scripts/utils/fav-initiator-btn";
 import FavoriteRestaurantIdb from "../src/scripts/data/restaurant-fav-idb";
+import * as TestFactories from "./helpers/testFactories";
 
 describe("Remove Restaurant from Favorite", () => {
   const addFavBtnContainer = () => {
@@ -18,11 +16,8 @@ describe("Remove Restaurant from Favorite", () => {
   });
 
   it("Hapus dari Favorit should be shown before it is removed from fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     expect(
@@ -31,11 +26,8 @@ describe("Remove Restaurant from Favorite", () => {
   });
 
   it("Tambahkan ke Favorit should not be shown before it is removed from fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     expect(
@@ -44,11 +36,8 @@ describe("Remove Restaurant from Favorite", () => {
   });
 
   it("It should be able to be removed from fav", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: {
-        id: "rqdv5juczeskfw1e867",
-      },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     document
@@ -59,14 +48,15 @@ describe("Remove Restaurant from Favorite", () => {
   });
 
   it("It shouldn't be able to be removed from fav when it is already removed", async () => {
-    await FavButtonInitiator.init({
-      favButtonContainer: document.querySelector("#favButtonContainer"),
-      restaurant: { id: "rqdv5juczeskfw1e867" },
+    await TestFactories.createFavButtonPresenterWithRestaurant({
+      id: "rqdv5juczeskfw1e867",
     });
 
     await FavoriteRestaurantIdb.deleteRestaurant("rqdv5juczeskfw1e867");
 
-    document.querySelector("#removeFavButton").dispatchEvent(new Event("click"));
+    document
+      .querySelector("#removeFavButton")
+      .dispatchEvent(new Event("click"));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
