@@ -73,7 +73,7 @@ describe("Add Restaurant to Favorite", () => {
     await FavoriteRestaurantIdb.deleteRestaurant("rqdv5juczeskfw1e867");
   });
 
-  xit("It shouldn't be able to be added to fav when it has no id", async () => {
+  it("It shouldn't be able to be added to fav when it has no id", async () => {
     await FavButtonInitiator.init({
       favButtonContainer: document.querySelector("#favButtonContainer"),
       restaurant: {},
