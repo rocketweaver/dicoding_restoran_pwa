@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
 const path = require("path");
 
 module.exports = {
@@ -42,8 +43,16 @@ module.exports = {
       ],
     }),
     new ImageminWebpackPlugin({
+      /**
+       * Full documentations:
+       * https://github.com/Klathmon/imagemin-webpack-plugin#api
+       */
       plugins: [
         ImageminMozjpeg({
+          /**
+           * Full documentations:
+           * https://github.com/imagemin/imagemin-mozjpeg#api
+           */
           quality: 50,
           progressive: true,
         }),
