@@ -25,6 +25,10 @@
     "comma-dangle": "off",
     "prefer-destructuring": "off",
     "no-unused-expressions": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-sequences": "off",
+    "keyword-spacing": "off",
+    "consistent-return": "off",
+    "no-prototype-builtins": "off"
   }
 }
