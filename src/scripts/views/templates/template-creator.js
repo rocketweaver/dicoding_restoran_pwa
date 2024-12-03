@@ -5,11 +5,9 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <h2 class="restaurant__title">${restaurant.name}</h2>
     <div id="favButtonContainer" class="fav-button-container"></div>
   </div>
-  <img class="restaurant__poster lazyload" src="${
+  <img class="restaurant__poster lazyload" data-src="${
     CONFIG.BASE_IMAGE_URL + restaurant.pictureId
-  }" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${
-  restaurant.name
-}" crossorigin="anonymous"/>
+  }" alt="${restaurant.name}" crossorigin="anonymous"/>
   <div class="restaurant__info">
     <h3>Detail</h3>
     <h4>Kota</h4>
@@ -76,12 +74,9 @@ const createRestaurantDetailTemplate = (restaurant) => `
 const createRestaurantItemTemplate = (restaurant) => `
   <div class="restaurant-item">
     <div class="restaurant-item__header">
-      <img class="restaurant-item__header__poster lazyload" alt="${restaurant.name}"
-           src="${
-             restaurant.pictureId
-               ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId
-               : "https://picsum.photos/id/666/800/450?grayscale"
-           }" data-src="${
+      <img class="restaurant-item__header__poster lazyload" alt="${
+        restaurant.name
+      }" data-src="${
   restaurant.pictureId
     ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId
     : "https://picsum.photos/id/666/800/450?grayscale"
